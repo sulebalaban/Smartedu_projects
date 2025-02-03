@@ -1,5 +1,7 @@
 {% extends 'partials/_base.html' %}
 {% block content %}
+
+{% load static %}
 	
 	<div id="carouselExampleControls" class="carousel slide bs-slider box-slider" data-ride="carousel" data-pause="hover" data-interval="false" >
 		<!-- Indicators -->
@@ -10,7 +12,7 @@
 		</ol>
 		<div class="carousel-inner" role="listbox">
 			<div class="carousel-item active">
-				<div id="home" class="first-section" style="background-image:url(' {%static "images/slider-01.jpg " %}');">
+				<div id="home" class="first-section" style="background-image:url('{%static "images/slider-01.jpg " %}');">
 					<div class="dtab">
 						<div class="container">
 							<div class="row">
@@ -253,34 +255,7 @@
             </div><!-- end row -->
         </div><!-- end container -->
     </div><!-- end section -->
+ 
+ {% endblock %}
 
-  
-    <div class="copyrights">
-        <div class="container">
-            <div class="footer-distributed">
-                <div class="footer-center">                   
-                    <p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">SmartEDU</a> Design By : <a href="https://html.design/">html design</a></p>
-                </div>
-            </div>
-        </div><!-- end container -->
-    </div><!-- end copyrights -->  
 
-    <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
-
-    <!-- ALL JS FILES -->
-    <script src="{% static 'js/all.js' %}"></script>
-    <!-- ALL PLUGINS -->
-    <script src="{% static 'js/custom.js' %}"></script>
-	<script src="{%static 'js/timeline.min.js' %}"></script>
-	<script>
-		timeline(document.querySelectorAll('.timeline'), {
-			forceVerticalMode: 700,
-			mode: 'horizontal',
-			verticalStartPosition: 'left', 
-			visibleItems: 4
-		});
-	</script>
-</body>
-</html>
-
-{% endblock %}
