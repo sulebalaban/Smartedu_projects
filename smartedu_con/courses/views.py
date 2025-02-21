@@ -29,7 +29,7 @@ def course_detail(request,category_slug,course_id):
 def category_list(request,category_slug):
     courses=Course.objects.all().filter(category__slug=category_slug)
     categories=Category.objects.all()
-    tags=Tag.object.all()
+    tags=Tag.objects.all()
     
     context={
         'courses':courses,
