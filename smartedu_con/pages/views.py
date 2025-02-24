@@ -4,7 +4,9 @@ from django.views.generic.edit import FormView
 from courses.models import Course
 from django.contrib.auth.models import User
 from teachers.models import Teacher
-
+from .forms import ContactForm
+from django.urls import reverse_lazy
+from django.contrib.messages.views import SuccessMessageMixin
 class IndexView(TemplateView):
     template_name = 'index.html'
 
@@ -16,19 +18,25 @@ class IndexView(TemplateView):
         context['total_teachers'] = Teacher.objects.count()
         return context
 
-#def index(request):
-#    return render(request, 'index.html')
 
 class AboutView(TemplateView):
     template_name = 'about.html'
 
-#def about(request):
-#   return render(request, 'about.html')
-
-class ContactView(FormView):
+class ContactView(SuccessMessageMixin,FormView):
     template_name = 'contact.html'
-   
+    form_class=ContactForm
+    success_url=reverse_lazy('contact')
+    success_message=' We recived your request '
 
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
+    
+    
+    
+    
+    
+#def about(request):
+#   return render(request, 'about.html')
+#def index(request):
+#    return render(request, 'index.html')

@@ -22,3 +22,9 @@ class ContactForm(forms.ModelForm):
         'class': 'form-control',
         'placeholder': 'Your Message'
     }))
+
+
+    
+    class Meta:
+        model=Contact
+        fields=['first_name','last_name','email','phone','message']
