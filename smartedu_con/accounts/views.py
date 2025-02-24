@@ -5,8 +5,8 @@ def user_login(request):
     return render (request,'login.html')
 
 def user_register(request):
-    pass
-
+    return render (request,'register.html')
+  
 def user_logout(request):
     pass
 
