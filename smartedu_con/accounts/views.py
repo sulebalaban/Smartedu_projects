@@ -26,18 +26,7 @@ def user_login(request):
         
     return render(request, 'login.html', {'form':form})    
 
-# def user_register(request):
-      
-#     if request.method == 'POST':
-#         form = RegisterForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             messages.success(request,'Account has been created You can Login')
-#             return redirect('login')
-
-#     else :
-#         form=RegisterForm()    
-#     return render(request,'register.html',{'form':form})      
+  
 
 
 from django.contrib import messages  # Import etmeyi unutmayın!
@@ -61,7 +50,8 @@ def user_register(request):
 
 
 def user_logout(request):
-    pass
+    logout(request)
+    return  redirect('index')
 
 def user_dashboard(request):
     pass

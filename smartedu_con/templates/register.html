@@ -21,8 +21,7 @@
                                 {{ form.first_name }}
 								{% if form.first_name.errors %}
 								<div class="text-danger">
-									{{ form.first_name.errors|first }}  <!-- İlk hata mesajını göster -->
-								</div>
+									{{ form.first_name.errors|first }}  
 							   {% endif %}
                             </div>
                         </div>
@@ -31,8 +30,7 @@
                                 {{ form.last_name }}
 								{% if form.last_name.errors %}
                            <div class="text-danger">
-                                {{ form.last_name.errors|first }}  <!-- İlk hata mesajını göster -->
-                           </div>
+                                {{ form.last_name.errors|first }}  
                                 {% endif %}
                             </div>
                         </div>
@@ -41,7 +39,7 @@
                                 {{ form.username }}
 								{% if form.username.errors %}
 								<div class="text-danger">
-									{{ form.username.errors|first }}  <!-- İlk hata mesajını göster -->
+									{{ form.username.errors|first }}  
 								</div>
 							    {% endif %}
                             </div>
@@ -51,7 +49,7 @@
                                 {{ form.email }}
 								{% if form.email.errors %}
 								<div class="text-danger">
-									{{ form.email.errors|first }}  <!-- İlk hata mesajını göster -->
+									{{ form.email.errors|first }}  
 								</div>
 							    {% endif %}
                             </div>
@@ -61,7 +59,7 @@
                                 {{ form.password1 }}
 								{% if form.password1.errors %}
                                <div class="text-danger">
-                                  {{ form.password1.errors|first }}  <!-- İlk hata mesajını göster -->
+                                  {{ form.password1.errors|first }}  
                                </div>
                                {% endif %}
                             </div>
@@ -71,7 +69,7 @@
                                 {{ form.password2 }}
 								{% if form.password2.errors %}
 								<div class="text-danger">
-									{{ form.password2.errors|first }}  <!-- İlk hata mesajını göster -->
+									{{ form.password2.errors|first }}  
 								</div>
 							    {% endif %}
                             </div>
@@ -82,11 +80,11 @@
                             </div>
                         </div>
                     </form>
-                </div> <!-- tab-pane active -->
-            </div> <!-- modal-body -->
-        </div> <!-- modal-content -->
-    </div> <!-- modal-dialog -->
-</div> <!-- modal -->
+                </div> 
+            </div> 
+        </div> 
+    </div> 
+</div> 
 
 
 <div id="carouselExampleControls" class="carousel slide bs-slider box-slider" data-ride="carousel" data-pause="hover" data-interval="false" >
@@ -98,7 +96,7 @@
 		</ol>
 		<div class="carousel-inner" role="listbox">
 			<div class="carousel-item active">
-				<div id="home" class="first-section" style="background-image:url('{%static "images/slider-01.jpg " %}');">
+				<div id="home" class="first-section" style="background-image:url('{% static "images/slider-01.jpg " %}');">
 					<div class="dtab">
 						<div class="container">
 							<div class="row">
