@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from .forms import LoginForm,RegisterForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import  messages
-
+from django.contrib.auth.decorators import login_required
 
 def user_login(request):
     if request.method == 'POST':
@@ -29,7 +29,7 @@ def user_login(request):
   
 
 
-from django.contrib import messages  # Import etmeyi unutmayın!
+
 
 def user_register(request):
     if request.method == 'POST':
@@ -37,11 +37,11 @@ def user_register(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Account has been created! You can Login')  
-            print("Success message added")  # Terminalde görünmeli
+            print("Success message added")  
             return redirect('login')
 
         else:
-            print("Form Errors:", form.errors)  # Form hata verirse terminalde görelim
+            print("Form Errors:", form.errors) 
     
     else:
         form = RegisterForm()
@@ -53,5 +53,9 @@ def user_logout(request):
     logout(request)
     return  redirect('index')
 
+@login_required(login_url="/accounts/login/")
 def user_dashboard(request):
-    pass
+    current_user=request.user
+    
+    return render(request, 'dashboard.html')
+    
