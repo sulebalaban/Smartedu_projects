@@ -57,5 +57,18 @@ def user_logout(request):
 def user_dashboard(request):
     current_user=request.user
     
-    return render(request, 'dashboard.html')
+    courses=current_user.courses_joined.all()
     
+    context={
+        'courses':courses
+    }
+    
+    return render(request, 'dashboard.html',context)
+
+def enroll_the_course(request):
+  course_id=request.POST['course_id'] 
+  user_id=request.POST['user_id']  
+  course=Course.objects.get(id=course_id)
+  user=User.objects.get(id=user_id)
+  course.student.add(user)      
+  return redirect('dashboard')    

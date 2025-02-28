@@ -17,20 +17,11 @@
                  
 					<div class="blog-author">
 						<div class="author-bio">
-							<h3 class="author_name">{{teacher.name}}</h3>
-							<h5>{{teacher.title}}</h5>
-							<p class="author_det">
-								Lorem ipsum dolor sit amet, consectetur adip, sed do eiusmod tempor incididunt  ut aut reiciendise voluptat maiores alias consequaturs aut perferendis doloribus omnis saperet docendi nec, eos ea alii molestiae aliquand.
-							</p>
+							<h2 class="author_name">{{user.first_name}} {{user.last_name}} </h2>
+							
+							
 						</div>
-						<div class="author-desc">
-							<img src="{{teacher.image.url}}" alt="about author">
-							<ul class="author-social">
-								<li><a href="{{teacher.facebook}}"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="{{teacher.twitter}}"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="{{teacher.youtube}}"><i class="fa fa-  youtube"></i></a></li>
-							</ul>
-						</div>
+						
 					</div>
 									
                 </div><!-- end col -->
@@ -38,7 +29,7 @@
             </div><!-- end row -->
 			<div class="row"> 
 				<div class=" col-12">
-					<h2 class="text-center my-5"> Courses Give by {{teacher.name}}</h2>
+					<h2 class="text-center my-5"> Courses Enrolled by {{user.username}}</h2>
 				</div>
 
                {% for course in courses %}

@@ -47,6 +47,6 @@ def course_detail(request, category_slug, course_id):
     course = get_object_or_404(Course, id=course_id)
     context = {'course': course}
     return render(request, 'course.html', context)    
-    
-    
-        
+
+
+
