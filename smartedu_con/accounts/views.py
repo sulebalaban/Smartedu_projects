@@ -3,6 +3,8 @@ from .forms import LoginForm,RegisterForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import  messages
 from django.contrib.auth.decorators import login_required
+from courses.models import Course
+from django.contrib.auth.models import User
 
 def user_login(request):
     if request.method == 'POST':
