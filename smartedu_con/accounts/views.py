@@ -73,4 +73,10 @@ def enroll_the_course(request):
   course=Course.objects.get(id=course_id)
   user=User.objects.get(id=user_id)
   course.student.add(user)      
+  return redirect('dashboard')   
+ 
+def release_the_course(request):
+  course=Course.objects.get(id=request.POST['course_id'])
+  user=User.objects.get(id=request.POST['user_id'])
+  course.student.remove(user)      
   return redirect('dashboard')    

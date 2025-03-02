@@ -22,10 +22,19 @@
 						<div class="post-content">
 							<div class="post-date">
 								{% if user.is_authenticated %}
-								<button type="submit" class="btn btn-outline-success rounded=0" data-toggle="modal" data-target="#enrollModal">
-								    <span>ENROLL</span>
-								</button>	
-								{%endif%}
+
+									{% if course in enrolled_courses %}
+										<button type="submit" class="btn btn-outline-danger rounded-0" data-toggle="modal"
+											data-target="#releaseModal">
+											<span>RELEASE</span>
+										</button>
+									{% else %}
+										<button type="submit" class="btn btn-outline-success rounded-0" data-toggle="modal"
+											data-target="#enrollModal">
+											<span>ENROLL</span>
+										</button>
+									{% endif %}
+								{% endif %}
 							</div>
 							<div class="meta-info-blog">
 								<span><i class="fa fa-calendar"></i>{{course.date|date:"d M Y "}}</span>
@@ -138,5 +147,34 @@
 		</div>
 	</div>
 </div>
-  
+<!-- RELEASE Modal -->
+<div class="modal fade" id="releaseModal" tabindex="-1" role="dialog" aria-labelledby="releaseModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2 class="modal-title" id="releaseabel">Release the course </h2>
+				<button type="button" class="close" data-dismiss="modal">
+					<span>&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>You will release the  course below:</p>
+				<h1>{{course.name}}</h1>
+			</div>
+			<div class="modal-footer">
+				<form action="{% url 'release_the_course' %}" method="POST">
+					{% csrf_token %}
+					<input type="hidden" name="user_id" value="{{user.id}}">
+					<input type="hidden" name="course_id" value="{{course.id}}">
+					<input type="submit" value="I AM SURE" class="btn btn-danger">
+				</form>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">
+					CANCEL
+				</button> 
+			</div>
+		</div>
+	</div>
+</div>
+    
     {% endblock %}    
