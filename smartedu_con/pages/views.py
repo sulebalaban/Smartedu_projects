@@ -7,6 +7,8 @@ from teachers.models import Teacher
 from .forms import ContactForm
 from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.models import User
+from teachers.models import Teacher
 class IndexView(TemplateView):
     template_name = 'index.html'
 
