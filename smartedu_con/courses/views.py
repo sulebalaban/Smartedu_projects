@@ -19,7 +19,6 @@ def course_list(request, category_slug=None, tag_slug=None):
         courses = Course.objects.filter(available=True, tags=tag_page)
 
     else:
-        #courses = Course.objects.all().order_by('-date')
         if current_user.is_authenticated:
             enrolled_courses = current_user.courses_joined.all()
             courses = Course.objects.all().order_by('-date')
