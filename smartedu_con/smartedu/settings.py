@@ -22,7 +22,10 @@ load_dotenv()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -32,15 +35,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-aji^zanupjsou&yy#umjmqa#h3_ahnzn^p79qdw9tm2ih@w8on'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
-
-#ALLOWED_HOSTS = []
-
-
-# Application definition
+DEBUG = False
+SITE_URL = os.getenv('SITE_URL', '127.0.0.1')
+ALLOWED_HOSTS = ['.vercel.app']
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic'
+    'whitenoise.runserver_nostatic',
     'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -55,8 +56,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware'
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -130,13 +131,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS =[os.path.join(BASE_DIR,'smartedu\static')]
+STATIC_URL = '/static/'
 
-STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'static'),  
+]
 
-# Media files
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type

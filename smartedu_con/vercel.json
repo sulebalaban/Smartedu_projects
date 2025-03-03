@@ -1,16 +1,19 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "manage.py",
-        "use": "@vercel/python"
+  "version": 2,
+  "builds": [
+    {
+      "src": "smartedu/wsgi.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "25mb",
+        "runtime": "python3.13.1"
       }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "manage.py"
-      }
-    ]
-  }
-  
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "smartedu/wsgi.py"
+    } 
+  ]
+}
