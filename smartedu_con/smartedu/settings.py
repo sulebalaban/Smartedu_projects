@@ -37,7 +37,7 @@ SECRET_KEY = 'django-insecure-aji^zanupjsou&yy#umjmqa#h3_ahnzn^p79qdw9tm2ih@w8on
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 SITE_URL = os.getenv('SITE_URL', '127.0.0.1')
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 INSTALLED_APPS = [
