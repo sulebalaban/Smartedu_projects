@@ -1,0 +1,29 @@
+
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "smartedu/wsgi.py",
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize": "15mb", "runtime": "python3.13.1" }
+      },
+      {
+        "src": "build_files.sh",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "smartedu_con/staticfiles"
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/static/(.*)",
+        "dest": "/static/$1"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "smartedu/wsgi.py"
+      }
+    ],
+    "outputDirectory": "smartedu_con/staticfiles"
+  }
