@@ -3,14 +3,14 @@
     "version": 2,
     "builds": [
       {
-        "src": "smartedu/wsgi.py",
+        "src": "smartedu/manage.py",
         "use": "@vercel/python"
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "smartedu/wsgi.py"
+        "dest": "smartedu/manage.py"
       }
     ]
   }
