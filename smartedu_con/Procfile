@@ -1,1 +1,0 @@
-web: gunicorn smartedu_con.wsgi

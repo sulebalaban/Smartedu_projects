@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
 from pathlib import Path
+from django.core.management.utils import get_random_secret_key
+from dotenv import load_dotenv
+
+load_dotenv() 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,14 +28,15 @@ SECRET_KEY = 'django-insecure-aji^zanupjsou&yy#umjmqa#h3_ahnzn^p79qdw9tm2ih@w8on
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
+SITE_URL = os.getenv('SITE_URL', '127.0.0.1')
 ALLOWED_HOSTS = ["*"]
-PORT = os.getenv("PORT", 8000)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -73,7 +78,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'smartedu.wsgi.application'
+WSGI_APPLICATION = 'smartedu.wsgi.app'
 
 
 # Database
@@ -120,12 +125,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-STATICFILES_DIRS =[os.path.join(BASE_DIR,'smartedu_con/static')]
+
+# .\env\Scripts\activate
+
 STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Directory for collected static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Directory for your static files during development
+]
 
-
-# Media files
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

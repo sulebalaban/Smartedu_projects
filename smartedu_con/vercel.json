@@ -1,0 +1,24 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "smartedu/wsgi.py",
+        "use": "@vercel/python",
+        "config": {
+          "runtime": "python3.12",
+          "installCommand": "pip install -r requirements.txt",
+          "buildCommand": "python manage.py collectstatic --noinput && python manage.py migrate"
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/staticfiles/(.*)",
+        "dest": "/static/$1"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "smartedu/wsgi.py"
+      }
+    ]
+  }
